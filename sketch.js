@@ -4672,27 +4672,6 @@ MediumTree.prototype.makeCollider = function(){
     }
 };
 
-var Block = function(x,y,z,l,h,w,azimuth,col){
-    this.x=x; this.y=y; this.z=z;
-    this.prevx=x; this.prevy=y; this.prevz=z;
-    this.l=l; this.h=h; this.w=w;
-    this.azimuth = azimuth;
-    this.col = col;
-};
-Block.prototype.draw = function(){
-    drawModel(cubeModel,this.x,this.y,this.z,this.l,this.h,this.w,this.azimuth,0,0,this.col,true);
-};
-Block.prototype.makeCollider = function(){
-    colliders.push({idTag:-1,
-        type:"box",
-        x:this.x, y:this.y, z:this.z,
-        prevx:this.prevx, prevy:this.prevy, prevz:this.prevz,
-        l:this.l, h:this.h, w:this.w,
-        azimuth:this.azimuth,
-        giveJumpFunc:giveJump
-    });
-};
-
 var WindowBlock = function(x,y,z,l,h,w,azimuth,col,windowLowH,windowHighH,windowCol){
     Block.call(this,x,y,z,l,h,w,azimuth,col);
     this.windowCol = windowCol;
@@ -9516,7 +9495,7 @@ Level.new(
             solids.push(Block.new(x+2,y+3.6,z+18.5,0.3,3.6,0.3,0,hueLightnessToRGB(this.hue,lightness)));
             solids.push(Block.new(x+10.3,y+9.2,z+19.8,1,0.5,1,5,hueLightnessToRGB(this.incrementHue(),lightness)));
             
-            for(var i = 0; i<1; i++){
+            for(var j = 0; j<1; j++){
                 var lx,ly,lz;
                 var works = false;
                 while(works===false){
